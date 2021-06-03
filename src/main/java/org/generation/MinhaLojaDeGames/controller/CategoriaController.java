@@ -3,7 +3,8 @@ package org.generation.MinhaLojaDeGames.controller;
 import java.util.List;
 
 import org.generation.MinhaLojaDeGames.model.Categoria;
-import org.generation.MinhaLojaDeGames.repository.categoriaRepository;
+import org.generation.MinhaLojaDeGames.repository.CategoriaRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/categoria")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoriaController {
 	
 	@Autowired
-	private categoriaRepository repository;
+	private CategoriaRepository repository;
 	
 	@GetMapping
 	public ResponseEntity<List<Categoria>> getAll(){
@@ -37,9 +38,9 @@ public class CategoriaController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 		
-	@GetMapping("/nome{nome}")
-	public ResponseEntity<List<Categoria>> getByNome(@PathVariable String categoria){
-		return ResponseEntity.ok(repository.findAllByNomeCategoriaContainigIgnoreCase (categoria));
+	@GetMapping("/categoria/{Categoria}")
+	public ResponseEntity<List<Categoria>> getByNome(@PathVariable String Categoria){
+		return ResponseEntity.ok(repository.findAllByNomeCategoriaContainingIgnoreCase (Categoria));
 	}
 	
 	@PostMapping

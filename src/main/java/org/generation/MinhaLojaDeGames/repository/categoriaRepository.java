@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.generation.MinhaLojaDeGames.model.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface categoriaRepository extends JpaRepository <Categoria, Long>{
+@Repository
+public interface CategoriaRepository extends JpaRepository <Categoria, Long>{
 	
-	public List<Categoria> findAllByNomeCategoriaContainigIgnoreCase(String nomeCategoria);
-
-}
+	public List<Categoria> findAllByNomeCategoriaContainingIgnoreCase(String nomeCategoria);
+	}

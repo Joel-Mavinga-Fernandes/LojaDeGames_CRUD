@@ -47,6 +47,13 @@ public class Categoria {
 	public void setId(long id) {
 		this.id = id;
 	}
+	public String getNomeCategoria() {
+		return nomeCategoria;
+	}
+
+	public void setNomeCategoria(String nomeCategoria) {
+		this.nomeCategoria = nomeCategoria;
+	}
 
 	public String getDescricaoCategoria() {
 		return descricaoCategoria;
@@ -56,12 +63,6 @@ public class Categoria {
 		this.descricaoCategoria = descricaoCategoria;
 	}
 	
-	public String getNomeCategoria() {
-		return nomeCategoria;
-	}
-
-	public void setNomeCategoria(String nomeCategoria) {
-		this.nomeCategoria = nomeCategoria;
-	}
+	
 
 }

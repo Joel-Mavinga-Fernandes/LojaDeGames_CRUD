@@ -23,39 +23,39 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProdutosController {
 	
 	@Autowired
-	private ProdutosRepository Repository;
-	//private Produtos produtos;
+	private ProdutosRepository repository;
+	
 	
 	@GetMapping
 	public ResponseEntity<List<Produtos>>GetAll(){
-		return ResponseEntity.ok(Repository.findAll());
+		return ResponseEntity.ok(repository.findAll());
 	}
 		
 	@GetMapping("/{id}")
 	public ResponseEntity<Produtos> GetById(@PathVariable long id){
-		return Repository.findById(id)
+		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping("/nome{nome}")
 	public ResponseEntity<List<Produtos>> GetByNome(@PathVariable String nome){
-		return  ResponseEntity.ok(Repository.findAllByNomeContainingIgnoreCase(nome));
+		return  ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
 	@PostMapping
 	public ResponseEntity<Produtos> post (@RequestBody Produtos produtos){
-		return ResponseEntity.status(HttpStatus.CREATED).body(Repository.save(produtos));
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produtos));
 	}
 
 	@PutMapping
 	public ResponseEntity<Produtos> put (@RequestBody Produtos produtos){
-		return ResponseEntity.status(HttpStatus.OK).body(Repository.save(produtos));
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(produtos));
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete (@PathVariable long id) {
-		Repository.deleteById(id);
+		repository.deleteById(id);
 	}
 }
 	
